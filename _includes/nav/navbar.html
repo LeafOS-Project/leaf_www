@@ -1,0 +1,26 @@
+{% if layout.has_sidenav %}
+<input type="checkbox" id="hamburger-sidenav" class="hamburger-sidenav"/>
+{% endif %}
+<ul class="topnav">
+  {% if layout.has_sidenav %}
+  <label for="hamburger-sidenav" class="label-sidenav">
+    <span class="icon-bar top-bar"></span>
+    <span class="icon-bar middle-bar"></span>
+    <span class="icon-bar bottom-bar"></span>
+  </label>
+  {% endif %}
+  <input type="checkbox" id="hamburger" class="hamburger"/>
+  <label for="hamburger">
+    <span class="icon-bar top-bar"></span>
+    <span class="icon-bar middle-bar"></span>
+    <span class="icon-bar bottom-bar"></span>
+  </label>
+  <li class="topnav-logo"><a class="topnav-link" href="{{ '/' | relative_url }}">{% include nav/nav_logo.svg %}</a></li>
+  <li class="mobile-placeholder"><p></p></li>
+  {% assign sorted_pages = site.pages | sort: 'title' %}
+  {% for nav_page in sorted_pages reversed %}
+  {% if nav_page.topnav_url %}
+  <li><a{% if nav_page.title == page.title %} class="active"{% endif %} href="{{ nav_page.url | relative_url }}">{{ nav_page.title }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
