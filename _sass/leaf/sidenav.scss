@@ -1,0 +1,47 @@
+.sidenav {
+  width: 260px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3 px 6px rgba(0,0,0,0.23);
+}
+
+.sidenav h2 {
+  font-size: 21px;
+  padding-left: 16px;
+  margin: -4px 0 4px 0;
+  width: 204px;
+}
+
+.sidenav a {
+  font-family: "Segoe UI",Arial,sans-serif;
+  text-decoration: none;
+  display: block;
+  padding: 2px 1px 1px 16px;
+  color: inherit;
+}
+
+.sidenav a:hover {
+  color: #000000;
+  background-color: #cccccc;
+}
+
+.sidenav a.active {
+  background-color: $color-leaf !important;
+  color: $color-leaf-text !important;
+}
+
+.leftmenuinner {
+  position: fixed;
+  top: 0;
+  padding-bottom: 0;
+  height: 100%;
+  width: 220px;
+  background-color: transparent;
+}
+
+.leftmenuinnerinner {
+  height: 100%;
+  width: 100%;
+  background-color: #e7e9eb;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
