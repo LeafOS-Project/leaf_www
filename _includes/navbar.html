@@ -1,0 +1,8 @@
+<ul class="topnav">
+  {% assign sorted_pages = site.pages | sort: 'title' %}
+  {% for nav_page in sorted_pages %}
+  {% if nav_page.layout == 'main' %}
+  <li><a{% if nav_page.title == page.title %} class="active"{% endif %} href="{{ nav_page.url | relative_url }}">{{ nav_page.title }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
