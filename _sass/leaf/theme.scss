@@ -1,0 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/century-gothic');
+
+html {
+  box-sizing: border-box;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
