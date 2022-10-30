@@ -1,0 +1,22 @@
+@import url('https://fonts.cdnfonts.com/css/century-gothic');
+
+html {
+  box-sizing: border-box;
+  font-family: 'Century Gothic', sans-serif;
+  color-scheme: only light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #1c1b22;
+    color: white;
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
