@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, maximum-scale=0.80'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+    <img alt="LeafOS" src="leaf.svg" />
+    <h1>SCREENSHOTS</h1>
+    {% assign count = -1 %}
+    {% for file in site.static_files %}
+        {% if file.path contains 'images/screenshot-' %}
+            {% assign count = count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+
+    {% for i in (0..count) %}
+        <img class="screenshot" alt="LeafOS Screenshot {{ i }}" src="images/screenshot-{{ i }}.webp" />
+        {% assign mod = i | modulo: 3 %}
+        {% if mod == 2 %}
+            <br>
+        {% endif %}
+    {% endfor %}
+</body>
+
+</html>
