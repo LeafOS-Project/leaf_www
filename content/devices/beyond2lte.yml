@@ -1,0 +1,32 @@
+status: active
+name: Galaxy S10+
+vendor: Samsung
+codename: beyond2lte
+models: [SM-G975F, SM-G975F/DS, SM-G975N]
+image: beyond2lte.webp
+release: 2019-03-08
+maintainers: [Linux4]
+versions: [2.0]
+
+soc: Samsung Exynos 9820
+architecture: arm64
+cpu: Exynos M4 & Cortex-A75 & Cortex-A55
+cpu_cores: '8'
+cpu_freq: 2 x 2.73 GHz + 2x 2.31 + 4 x 1.95 GHz
+gpu: ARM Mali-G76 MP12
+ram: 8/12 GB
+storage: 128/256 GB
+sdcard: {sizeMax: '512 GB'}
+screen: {size: '162.5 mm (6.4 in)', density: 522, resolution: '3040x1440', technology: 'Quad HD+ Dynamic AMOLED'}
+battery: {removable: False, capacity: 4100, tech: 'Li-Ion'}
+cameras:
+- {flash: 'LED', info: '12 MP'}
+- {flash: 'LED', info: '12 MP (telephoto)'}
+- {flash: 'LED', info: '16 MP (ultrawide)'}
+- {flash: None, info: '10 MP'}
+- {flash: None, info: '8 MP (depth sensor)'}
+network: [2G GSM, 3G UMTS, 4G LTE]
+wifi: 802.11 a/b/g/n/ac/ax, Dual-band, Wi-Fi Direct, Hotspot
+bluetooth: {spec: '5', profiles: [A2DP + aptX]}
+peripherals: [Accelerometer, Barometer, Compass, Fingerprint reader, GPS, Gyroscope, Heart rate sensor, Proximity sensor, Qi wireless charging, Qi reverse wireless charging]
+dimensions: {width: '74.1 mm (2.92 in)', height: '157.6 mm (6.2 in)', depth: '7.8 mm (0.31 in)'}

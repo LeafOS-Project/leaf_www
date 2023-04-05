@@ -1,0 +1,155 @@
+@import url('https://fonts.cdnfonts.com/css/century-gothic');
+
+:root {
+    --color-leaf: #90ee90;
+    --color-leaf-text: #202124;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Century Gothic', sans-serif;
+    color-scheme: only light;
+}
+
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+a.community {
+    text-decoration: none;
+    color: #1ec71e;
+    text-shadow: 1px 1px 2px #989898, -1px -1px 2px #ffffff;
+}
+
+.get-leaf {
+    text-decoration: none;
+    padding: 8px 12px;
+    background-color: #1ec71e;
+    color: white;
+    font-weight: 400;
+}
+
+footer {
+    font-size: 16px;
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.sidenav {
+    width: 260px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3 px 6px rgba(0, 0, 0, 0.23);
+    height: 100vh;
+    background-color: #e7e9eb;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    padding-bottom: 0;
+    margin-top: 64px;
+}
+
+.sidenav h2 {
+    font-size: 21px;
+    padding-left: 16px;
+    margin: -4px 0 4px 0;
+    width: 204px;
+}
+
+.sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidenav a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 16px;
+    color: inherit;
+}
+
+.sidenav a:hover {
+    color: #000000;
+    background-color: #cccccc;
+}
+
+.sidenav a.active {
+    background-color: #90ee90;
+    color: #202124;
+    font-weight: 700;
+}
+
+.sidenav~.content {
+    margin-left: 260px;
+    max-width: calc(100vw - 260px);
+}
+
+.content {
+    min-height: calc(100vh - (64px) - (40px * 2 + 16px));
+}
+
+.banner {
+    background-color: #90ee90;
+    color: #202124;
+    padding: 2.125rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #1c1b22;
+        color: white;
+    }
+
+    a.community {
+        text-shadow: 1px 1px 2px #989898, -1px -1px 2px #000000;
+    }
+
+    footer,
+    .sidenav {
+        background-color: #0e0d11;
+    }
+}

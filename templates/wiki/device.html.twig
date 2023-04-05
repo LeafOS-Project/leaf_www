@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% set currentDevice = app.request.attributes.get('_route_params').device %}
+
+{% block title %}
+  LeafOS Wiki
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{{ asset('assets/wiki.css') }}" />
+{% endblock %}
+
+{% block body %}
+  <div class="sidenav">
+    <h2>Devices</h2>
+
+    {% for device in availableDevices %}
+      <a href="{{ path('leaf_device', { device: device.codename }) }}" class="{{ currentDevice == device.codename ? 'active' : '' }}">{{ device.codename }}</a>
+    {% endfor %}
+  </div>
+  <div class="content">
+    <div class="banner">
+      <div class="container">
+        <h1>LeafOS for {{ device.codename }}</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="device-info">
+        <div class="instructions">
+          <h2>Downloads</h2>
+          {% for build in downloads.latestBuilds %}
+            <div class="build-card">
+              <div class="title">{{ build.filename }}</div>
+              <div class="build-info">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Build Date</td>
+                      <td>{{ build.datetime|date('d/m/Y') }}</td>
+                      <td>Flavor</td>
+                      <td>{{ build.flavor }}</td>
+                    </tr>
+                    <tr>
+                      <td>LeafOS Version</td>
+                      <td>{{ build.version }}</td>
+                      <td>File size</td>
+                      <td>{{ build.size|human_readable_format }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="specs">
+          <div class="heading">
+            <h2>{{ device.vendor }} {{ device.name }}</h2>
+            <p>Released {{ device.release|date('d/m/Y') }}</p>
+          </div>
+          <img src="{{ asset('assets/images/devices/' ~ device.image) }}" alt="{{ device.name }}" />
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <b>SoC</b>
+                </td>
+                <td>{{ device.soc }} ({{ device.architecture }})</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>CPU</b>
+                </td>
+                <td>
+                  <p>{{ device.cpu_cores }} cores {{ device.cpu }}</p>
+                  <p>{{ device.cpu_freq }}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>GPU</b>
+                </td>
+                <td>{{ device.gpu }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>RAM</b>
+                </td>
+                <td>{{ device.ram }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Storage</b>
+                </td>
+                <td>
+                  <p>{{ device.storage }}</p>
+                  {% if device.sdcard is defined %}
+                    <p>SD card slot up to {{ device.sdcard.sizeMax }}</p>
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Screen</b>
+                </td>
+                <td>
+                  <ul>
+                    <li>{{ device.screen.size }}</li>
+                    <li>{{ device.screen.resolution }} ({{ device.screen.density }} PPI)</li>
+                    <li>{{ device.screen.technology }}</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Battery</b>
+                </td>
+                <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
+                  {{ device.battery.tech }} {{ device.battery.capacity }} mAh</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Cameras</b>
+                </td>
+                <td>
+                  <ul>
+                    {% for camera in device.cameras %}
+                      <li>{{ camera.info }} {{ camera.flash != 'None' ? ', ' ~ camera.flash ~ ' flash' : '' }}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Network</b>
+                </td>
+                <td>
+                  <ul>
+                    {% for network in device.network %}
+                      <li>{{ network }}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>WiFi</b>
+                </td>
+                <td>{{ device.wifi }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Bluetooth</b>
+                </td>
+                <td>
+                  {{ device.bluetooth.spec }}
+                  {% if device.bluetooth.profiles is defined and device.bluetooth.profiles is not empty %}
+                    with{% for profile in device.bluetooth.profiles %}
+                      {{ profile }}
+                    {% endfor %}
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

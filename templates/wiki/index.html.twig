@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  LeafOS Wiki
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{{ asset('assets/wiki.css') }}" />
+{% endblock %}
+
+{% block body %}
+  <div class="sidenav">
+    <h2>Devices</h2>
+
+    <ul>
+      {% for device in availableDevices %}
+        <li>
+          <a href="{{ path('leaf_device', { device: device.codename }) }}">{{ device.codename }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <div class="content">
+    <div class="banner">
+      <div class="container">
+        <h1>Welcome to the LeafOS wiki!</h1>
+        <p>You can find various information, how-tos, build instructions and much more here in our wiki.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

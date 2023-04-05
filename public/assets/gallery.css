@@ -1,0 +1,26 @@
+.content {
+    background-color: #129b5ad5;
+}
+
+.grid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 25px;
+    padding-bottom: 20px;
+}
+
+img {
+    border-radius: 20px;
+    width: 200px;
+    justify-self: center;
+    box-shadow: 1px 1px 8px black;
+}
+
+@media screen and (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
