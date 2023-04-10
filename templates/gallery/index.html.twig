@@ -4,21 +4,17 @@
   LeafOS Gallery
 {% endblock %}
 
-{% block page_css %}
-  <link rel="stylesheet" href="{{ asset('assets/gallery.css') }}" />
-{% endblock %}
-
 {% block body %}
-  <div class="content">
+  <article class="gallery">
     <div class="banner">
       <div class="container">
         <h1>ROM Gallery</h1>
       </div>
     </div>
-    <div class="grid">
+    <div class="screenshot-gallery">
       {% for screenshot in screenshots %}
         <img src="{{ asset('assets/images/screenshots/' ~ screenshot) }}" alt="Screenshot" />
       {% endfor %}
     </div>
-  </div>
+  </article>
 {% endblock %}
