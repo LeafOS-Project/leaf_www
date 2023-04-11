@@ -4,18 +4,17 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>
-      {% block title %}
-        Welcome!
-      {% endblock %}
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LeafOS is an AOSP-based custom ROM for select Android devices." />
+    <title>{% block title %}{% endblock %}</title>
     {# Favicon same as navbar logo #}
     <link rel="icon" href="data:image/svg+xml, %3Csvg id='vector' xmlns='http://www.w3.org/2000/svg' height='30px' viewBox='0 0 140.2 76.8'%3E%3Cpath fill='%2390ee90' d='M28.88 31.84C35.54 40 45.19 48.78 51 58.5c5.14 10.73 14.22 25.34 -3.33 13.65 -13.43 -6.58 -29.21 -10 -38.22 -22.22C0.3 42.26 -2.77 -3.82 2.74 0.25 24.46 11 48 9.35 60.23 23.48a40.75 40.75 0 0 1 8.15 14.85c2.81 7.88 5.2 -7.21 7.53 -9.22C79.66 22.69 85.58 18 92.06 14.8c14.06 -5.15 29.14 -7 42.88 -13.31 2.26 -1 4.25 -1.55 4.8 -0.43 1.28 18.32 0.77 39.76 -12.86 53.37C114.91 65.51 98 67.91 84.12 76.7c-3.83 1 -0.62 -5.45 0.17 -8 5.56 -16 17.39 -24.86 29.34 -37.27C85.69 39.75 77.73 81 73.41 67.29c-1.25 -2 -0.53 -7.12 -3.5 -7.3 -3.17 0.58 -2.27 13.27 -8.27 7.83C53.88 54 43.86 37.9 28.88 31.84Z' id='path_0'%3E%3C/path%3E%3C/svg%3E" />
     {# Site CSS #}
     <link rel="stylesheet" href="{{ asset('assets/app.css') }}" />
-    {% block page_css %}
-
-    {% endblock %}
+    <link rel="canonical" href="{{ path('leaf_home') }}" />
+    <meta property="og:title" content="{{ block('title') }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ app.request.uri }}" />
   </head>
   <body>
     <div class="layout">
@@ -23,6 +22,7 @@
       <main>
         {% block body %}
         {% endblock %}
+        
       </main>
       {% include '@components/footer.html.twig' %}
     </div>
