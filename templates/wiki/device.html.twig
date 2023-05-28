@@ -51,7 +51,7 @@
                       </tr>
                       <tr>
                         <td colspan="2" class="center">
-                          <a href="{{build.url}}" class="button">Download</a>
+                          <a href="{{ build.url }}" class="button">Download</a>
                         </td>
                       </tr>
                     </tbody>
@@ -61,6 +61,32 @@
             {% endfor %}
           </div>
           <h3>Archive</h3>
+
+          <table class="center">
+            <thead>
+              <tr>
+                <th>Build Date</th>
+                <th>Leaf Version</th>
+                <th class="hide-mobile">Build Flavor</th>
+                <th class="hide-mobile">Build Version</th>
+                <th>ROM Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for build in downloads.previousBuilds %}
+                <tr>
+                  <td>{{ build.datetime|date('d/m/Y') }}</td>
+                  <td>
+                    {{ build.version }}
+                    <span class="show-mobile">{{ build.flavor }} - build {{ build.incremental }}</span>
+                  </td>
+                  <td class="hide-mobile">{{ build.flavor }}</td>
+                  <td class="hide-mobile">{{ build.incremental }}</td>
+                  <td>{{ build.romtype }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         <div class="specs">
           <div class="heading">
@@ -71,36 +97,26 @@
           <table>
             <tbody>
               <tr>
-                <td>
-                  SoC
-                </td>
+                <td>SoC</td>
                 <td>{{ device.soc }} ({{ device.architecture }})</td>
               </tr>
               <tr>
-                <td>
-                  CPU
-                </td>
+                <td>CPU</td>
                 <td>
                   <p>{{ device.cpu_cores }} cores {{ device.cpu }}</p>
                   <p>{{ device.cpu_freq }}</p>
                 </td>
               </tr>
               <tr>
-                <td>
-                  GPU
-                </td>
+                <td>GPU</td>
                 <td>{{ device.gpu }}</td>
               </tr>
               <tr>
-                <td>
-                  RAM
-                </td>
+                <td>RAM</td>
                 <td>{{ device.ram }}</td>
               </tr>
               <tr>
-                <td>
-                  Storage
-                </td>
+                <td>Storage</td>
                 <td>
                   <p>{{ device.storage }}</p>
                   {% if device.sdcard is defined %}
@@ -109,9 +125,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Screen
-                </td>
+                <td>Screen</td>
                 <td>
                   <ul>
                     <li>{{ device.screen.size }}</li>
@@ -121,16 +135,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Battery
-                </td>
+                <td>Battery</td>
                 <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
                   {{ device.battery.tech }} {{ device.battery.capacity }} mAh</td>
               </tr>
               <tr>
-                <td>
-                  Cameras
-                </td>
+                <td>Cameras</td>
                 <td>
                   <ul>
                     {% for camera in device.cameras %}
@@ -140,9 +150,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Network
-                </td>
+                <td>Network</td>
                 <td>
                   <ul>
                     {% for network in device.network %}
@@ -152,15 +160,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  WiFi
-                </td>
+                <td>WiFi</td>
                 <td>{{ device.wifi }}</td>
               </tr>
               <tr>
-                <td>
-                  Bluetooth
-                </td>
+                <td>Bluetooth</td>
                 <td>
                   {{ device.bluetooth.spec }}
                   {% if device.bluetooth.profiles is defined and device.bluetooth.profiles is not empty %}
@@ -175,5 +179,5 @@
         </div>
       </div>
     </div>
-  </artic>
+  </article>
 {% endblock %}
