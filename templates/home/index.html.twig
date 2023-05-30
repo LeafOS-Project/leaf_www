@@ -1,16 +1,52 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}
   LeafOS ROM
 {% endblock %}
-
 {% block body %}
-  <article>
+  <article class="home">
     <div class="banner">
       <div class="container">
         <h1>Welcome to the LeafOS!</h1>
         <p>LeafOS is an AOSP-based ROM, focused on stability.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus aliquam ante sed convallis. Nullam vitae vestibulum nunc. Donec vehicula leo elementum odio suscipit mollis. Vivamus facilisis magna.</p>
         <a href="{{ path('leaf_wiki') }}" class="button">Get LeafOS</a>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Leaf Features</h2>
+      <div class="features">
+        <div class="card">
+          <h3>Secure</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, urna vel ultricies efficitur, odio tellus feugiat arcu, in facilisis.</p>
+        </div>
+        <div class="card">
+          <h3>Stable</h3>
+          <p>Integer lacus diam, gravida ac rutrum eget, ultricies eget ligula. Donec rhoncus at mi et pharetra. Donec sed eros ut.</p>
+        </div>
+        <div class="card">
+          <h3>Personalizable</h3>
+          <p>Aenean placerat rhoncus scelerisque. Nunc quis nisi sed arcu volutpat lobortis. Praesent ullamcorper aliquam interdum. Maecenas aliquam ipsum at orci.</p>
+        </div>
+        <div class="card">
+          <h3>Constantly Updated</h3>
+          <p>Aenean nec ullamcorper orci. Vestibulum volutpat magna sit amet metus commodo tempor. Nunc lacinia velit sollicitudin nulla rutrum, eget venenatis.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Keep your device for longer</h2>
+      <p>With Leaf OS, you're not limited to your device's OEM upgrade range. Not only you can extend its lifespan, you can get more performance out of your device with a clean and lightweight OS.</p>
+    </div>
+    <div class="container">
+      <div class="features">
+        <div>
+          <h2>Open-source, by default</h2>
+          <p>You are in control. Everything is open-sourced, you can check for yourself what every app is doing, anytime.</p>
+        </div>
+        <div>
+          <h2>Device not yet supported?</h2>
+          <p>No problem! You can build the ROM for your device, and apply to be a maintainer for it.</p>
+        </div>
       </div>
     </div>
   </article>
