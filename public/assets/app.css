@@ -672,3 +672,53 @@ td {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.vendor-dropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dropdown-menu {
+  margin-left: 20px;
+}
+
+.dropdown-menu li {
+  padding-top: 18px;
+  margin-right: 10px;
+}
+
+.dropdown-menu li a {
+  border-radius: 10px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  transition: background-color 200ms ease-in-out;
+}
+
+.dropdown-menu li a:hover {
+  color: #90ee90;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 15px;
+}
+
+.dropdown-arrow::after {
+  content: '\2304';
+  font-size: 1.5em;
+}
+
+.selected-device,
+.selected-device:hover {
+  background-color: var(--button-bg-active);
+  color: var(--button-color);
+}
