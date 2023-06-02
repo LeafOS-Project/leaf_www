@@ -32,7 +32,7 @@ class DeviceService {
         if (is_file($file)) {
             return Yaml::parseFile($file);
         } else {
-            throw new DeviceNotFoundException("The device \"" . $device . "\" doesn't exist.");
+            throw new DeviceNotFoundException("The device \"{$device}\" doesn't exist.");
         }
     }
 }

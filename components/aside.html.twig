@@ -1,0 +1,31 @@
+{% set currentDevice = app.request.attributes.get('_route_params').device|default('') %}
+
+<aside>
+  <div class="accordion">
+    <div class="accordion-item">
+      <input type="checkbox" id="devices" checked />
+      <label class="accordion-label" for="devices">Devices</label>
+      <div class="accordion-content">
+        <ul>
+          {% for device in availableDevices %}
+            <li>
+              <a href="{{ path('leaf_wiki_device', { device: device.codename }) }}" class="{{ currentDevice == device.codename ? 'active' : '' }}">{{ device.codename }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <input type="checkbox" id="how-to" />
+      <label class="accordion-label" for="how-to">How-to</label>
+      <div class="accordion-content">
+        <ul>
+          <li>
+            <a href="{{ path('leaf_wiki_howto', { page: 'request-device' }) }}">Request a device</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</aside>

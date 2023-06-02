@@ -3,25 +3,36 @@
 namespace App\Controller;
 
 use App\Enum\OtaFlavor;
+use App\Exception\WikiPageNotFoundException;
 use App\Service\DeviceService;
 use App\Service\LeafOtaService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
+use Twig\Loader\LoaderInterface;
 
 class WikiController extends AbstractController {
+    private LoaderInterface $loader;
+    private array $availableDevices;
+
+    public function __construct(Environment $twig, private DeviceService $deviceService) {
+        $this->loader = $twig->getLoader();
+        $this->availableDevices = $deviceService->getAvailableDevices();
+    }
+
     #[Route('/wiki', name: 'leaf_wiki')]
-    public function index(DeviceService $deviceService): Response {
+    public function index(): Response {
         return $this->render(
             'wiki/index.html.twig',
             [
                 'showSidenav' => true,
-                'availableDevices' => $deviceService->getAvailableDevices()
+                'availableDevices' => $this->availableDevices
             ]
         );
     }
 
-    #[Route('/wiki/{device}', name: 'leaf_device')]
+    #[Route('/wiki/device/{device}', name: 'leaf_wiki_device')]
     public function device(DeviceService $deviceService, LeafOtaService $otaService, string $device): Response {
         $latestBuilds = [
             'vanilla' => $otaService->getLatestBuildForDevice($device, OtaFlavor::Vanilla->value),
@@ -42,7 +53,7 @@ class WikiController extends AbstractController {
             'wiki/device.html.twig',
             [
                 'showSidenav' => true,
-                'availableDevices' => $deviceService->getAvailableDevices(),
+                'availableDevices' => $this->availableDevices,
                 'device' => $deviceService->getDeviceInfo($device),
                 'downloads' => [
                     'latestBuilds' => $latestBuilds,
@@ -52,5 +63,17 @@ class WikiController extends AbstractController {
                 ]
             ]
         );
+    }
+
+    #[Route('/wiki/how-to/{page}', name: 'leaf_wiki_howto')]
+    public function howTos(string $page): Response {
+        if ($this->loader->exists("wiki/how-to/{$page}.html.twig")) {
+            return $this->render(
+                "wiki/how-to/{$page}.html.twig",
+                ['availableDevices' => $this->availableDevices]
+            );
+        } else {
+            throw new WikiPageNotFoundException("The wiki page for \"{$page}\" doesn't exist.");
+        }
     }
 }

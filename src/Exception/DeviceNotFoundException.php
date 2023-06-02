@@ -2,4 +2,5 @@
 
 namespace App\Exception;
 
-class DeviceNotFoundException extends \Exception {};
+class DeviceNotFoundException extends \Exception {
+};
