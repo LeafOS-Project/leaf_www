@@ -2,6 +2,7 @@
 
 <aside>
   <h2>Devices</h2>
+  <input type="text" id="device-search" placeholder="Search devices" onkeyup="searchDevices()">
   {% for vendor, devices in deviceVendors %}
     <div class="accordion-item">
       <input type="radio" id="vendor-{{ loop.index }}" name="accordion" hidden/>
