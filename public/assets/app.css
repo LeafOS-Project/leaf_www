@@ -553,3 +553,32 @@ td {
     font-size: 12px;
   }
 }
+
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.vendor-dropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dropdown-menu {
+  margin-left: 20px;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 15px;
+}
+
+.dropdown-arrow::after {
+  content: '\2304';
+  font-size: 1.5em;
+}
