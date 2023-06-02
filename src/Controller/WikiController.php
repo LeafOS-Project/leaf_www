@@ -15,10 +15,12 @@ use Twig\Loader\LoaderInterface;
 class WikiController extends AbstractController {
     private LoaderInterface $loader;
     private array $availableDevices;
+    private array $vendors;
 
     public function __construct(Environment $twig, private DeviceService $deviceService) {
         $this->loader = $twig->getLoader();
         $this->availableDevices = $deviceService->getAvailableDevices();
+        $this->vendors = $deviceService->getDeviceVendors();
     }
 
     #[Route('/wiki', name: 'leaf_wiki')]
@@ -27,8 +29,9 @@ class WikiController extends AbstractController {
             'wiki/index.html.twig',
             [
                 'showSidenav' => true,
-                'availableDevices' => $this->availableDevices
-            ]
+                'availableDevices' => $this->availableDevices,
+                'deviceVendors' => $this->vendors,
+            ],
         );
     }
 
@@ -60,7 +63,8 @@ class WikiController extends AbstractController {
                     'latestOTAs' => $latestOTAs,
                     'previousBuilds' => $allBuilds,
                     'previousOTAs' => $allOTAs
-                ]
+                ],
+                'deviceVendors' => $this->vendors,
             ]
         );
     }
