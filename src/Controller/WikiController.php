@@ -16,8 +16,9 @@ class WikiController extends AbstractController {
             'wiki/index.html.twig',
             [
                 'showSidenav' => true,
-                'availableDevices' => $deviceService->getAvailableDevices()
-            ]
+                'availableDevices' => $deviceService->getAvailableDevices(),
+                'deviceVendors' => $deviceService->getDeviceVendors(),
+            ],
         );
     }
 
@@ -49,7 +50,8 @@ class WikiController extends AbstractController {
                     'latestOTAs' => $latestOTAs,
                     'previousBuilds' => $allBuilds,
                     'previousOTAs' => $allOTAs
-                ]
+                ],
+                'deviceVendors' => $deviceService->getDeviceVendors(),
             ]
         );
     }
