@@ -147,10 +147,9 @@ a:hover {
 }
 
 main aside {
-  width: 220px;
-  min-width: 220px;
+  display: flex;
+  flex-direction: column;
   box-shadow: var(--shadow);
-  min-height: 100vh;
   background-color: var(--background-color);
   z-index: 2;
 }
@@ -721,4 +720,16 @@ td {
 .selected-device:hover {
   background-color: var(--button-bg-active);
   color: var(--button-color);
+}
+
+#device-search {
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  margin-left: 15px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  border: none;
+  outline: none;
 }
