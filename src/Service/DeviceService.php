@@ -26,6 +26,21 @@ class DeviceService {
         }, $availableDevices));
     }
 
+    public function getDeviceVendors(): array {
+        $availableDevices = $this->getAvailableDevices();
+        $vendors = [];
+
+        foreach ($availableDevices as $device) {
+            $vendor = $device['vendor'];
+            if (!array_key_exists($vendor, $vendors)) {
+                $vendors[$vendor] = [];
+            }
+            $vendors[$vendor][] = $device;
+        }
+
+        return $vendors;
+    }
+
     public function getDeviceInfo(string $device) {
         $file = $this->devicesDirectory . $device . '.yml';
 
