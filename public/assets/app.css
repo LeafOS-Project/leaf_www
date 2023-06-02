@@ -24,10 +24,18 @@
 
   --control-bg: #e4f6ee;
   --control-color: #669982;
-
   --control-hover: #f2fbf7;
   --control-active: #bee9d6;
   --control-text-active: #669982;
+
+  --shadow: 0 2px 6px rgb(0 0 0 / 25%);
+
+  --alert-bg: #fff2ae;
+  --alert-color: #ad6c00;
+  --error-bg: #fdcdcd;
+  --error-color: #d83e3e;
+  --success-bg: #b4f1af;
+  --success-color: #33722d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,7 +64,26 @@
     --control-hover: #17231e;
     --control-active: #060908;
     --control-text-active: #6c9381;
+
+    --shadow: 0 2px 6px rgb(0 0 0 / 50%);
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid var(--button-bg-active);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--button-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--button-bg-hover);
 }
 
 html {
@@ -99,6 +126,7 @@ a:hover {
 .layout {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .layout main {
@@ -110,14 +138,67 @@ a:hover {
 main aside {
   width: 220px;
   min-width: 220px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: var(--shadow);
   min-height: 100vh;
   background-color: var(--background-color);
+  z-index: 2;
 }
 
 aside h2 {
   font-size: 21px;
   padding: 20px 16px;
+}
+
+.accordion,
+.accordion-item {
+  overflow: hidden;
+}
+
+.accordion-item {
+  width: 100%;
+}
+
+.accordion-item input {
+  display: none;
+}
+
+.accordion-item label {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  background: var(--control-bg);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accordion-item label:hover {
+  background: var(--control-hover);
+}
+
+.accordion-item label::after {
+  content: "❯";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transition: all 0.35s;
+}
+
+.accordion-content {
+  max-height: 0;
+  color: var(--text-color);
+  background: var(--background-color);
+  transition: all 500ms ease-in-out;
+  display: block;
+}
+
+input:checked + .accordion-label {
+  background: var(--control-active);
+}
+input:checked + .accordion-label::after {
+  transform: rotate(90deg);
+}
+input:checked ~ .accordion-content {
+  max-height: fit-content;
 }
 
 aside ul {
@@ -145,12 +226,17 @@ aside a.active {
 
 main article {
   flex-grow: 1;
-  min-height: calc(100vh - (64px) - (40px * 2 + 21px));
+}
+
+hr {
+  border-style: solid;
+  border-color: var(--control-bg);
 }
 
 footer {
   background-color: var(--hero-bg-color);
   padding: 20px 0;
+  z-index: 3;
 }
 
 footer div {
@@ -161,14 +247,6 @@ footer p {
   margin: 0;
   padding: 0;
   color: var(--control-color);
-}
-
-footer .footnote {
-  text-align: center;
-  padding: 15px 0;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
 }
 
 table.center thead th,
@@ -186,9 +264,10 @@ nav.navbar {
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 50%);
+  box-shadow: var(--shadow);
   display: flex;
   justify-items: center;
+  height: 60px;
 }
 
 .navbar div {
@@ -197,7 +276,7 @@ nav.navbar {
 }
 
 .navbar a.logo {
-  padding: 14px 16px;
+  padding: 0 20px;
   border: 0;
 }
 
@@ -206,11 +285,12 @@ nav.navbar {
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 }
 
 .navbar ul li a {
   background-color: var(--background-color);
-  display: block;
+  display: inline-block;
   color: var(--control-color);
   text-align: center;
   padding: 21px 16px;
@@ -244,7 +324,7 @@ nav.navbar {
   color: var(--button-color);
   font-weight: 600;
   display: inline-block;
-  transition: all 200ms ease-in-out;
+  transition: var(--transition);
   border-radius: 4px;
   border: 0;
 }
@@ -287,6 +367,16 @@ nav.navbar {
   flex-basis: 25%;
   width: 200px;
   box-shadow: 0 2px 8px black;
+}
+
+.wiki {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 30px;
+}
+
+.wiki .for-developers {
+  column-span: 2;
 }
 
 .device-info {
@@ -379,6 +469,26 @@ td {
   row-gap: 25px;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error h2 {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.error .buttons {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+}
+
 /* Media queries */
 @media (min-width: 576px) {
   .contribute {
@@ -445,11 +555,16 @@ td {
     flex-direction: column;
     display: none;
     position: absolute;
-    margin-top: 63px;
+    margin-top: 60px;
   }
 
   .navbar ul li {
     width: 100vw;
+  }
+
+  .navbar ul li a {
+    background-color: var(--control-bg);
+    display: block;
   }
 
   .navbar .label-aside,
@@ -501,15 +616,16 @@ td {
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    margin-right: 5px;
+    padding-right: 25px;
   }
 
   .navbar .label-navbar .icon-bar {
     display: block;
-    width: 48px;
-    height: 6px;
+    width: 30px;
+    height: 2px;
     background-color: var(--control-color);
-    margin: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     transition: all 0.2s;
   }
 
@@ -522,7 +638,7 @@ td {
   }
 
   #toggle-navbar:checked ~ .label-navbar .top-bar {
-    transform: translateY(16px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
 
   #toggle-navbar:checked ~ .label-navbar .middle-bar {
@@ -530,26 +646,18 @@ td {
   }
 
   #toggle-navbar:checked ~ .label-navbar .bottom-bar {
-    transform: translateY(-16px) rotate(-45deg);
+    transform: translateY(-4px) rotate(-45deg);
   }
 
   #toggle-navbar:checked ~ ul {
     display: flex;
   }
 
-  .features {
+  .wiki {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
-  .screenshot-gallery {
-    flex-direction: column;
-  }
-
-  .banner svg {
-    right: 5%;
-  }
-
-  footer p:not(.footnote) {
-    font-size: 12px;
+  .features {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }

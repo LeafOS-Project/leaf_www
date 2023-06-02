@@ -5,22 +5,46 @@
 {% endblock %}
 
 {% block body %}
-  <aside>
-    <h2>Devices</h2>
-
-    <ul>
-      {% for device in availableDevices %}
-        <li>
-          <a href="{{ path('leaf_device', { device: device.codename }) }}">{{ device.codename }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </aside>
+  {% include '@components/aside.html.twig' %}
   <article>
     <div class="banner">
       <div class="container">
         <h1>Welcome to the LeafOS wiki!</h1>
         <p>You can find various information, how-tos, build instructions and much more here in our wiki.</p>
+      </div>
+    </div>
+
+    <div class="container wiki">
+      <div>
+        <h2>For users</h2>
+        <hr />
+        <h3>Get LeafOS</h3>
+        <ul>
+          <li>Check on the sidebar for our currently supported devices.</li>
+          <li>If you device isn't on the list, you can check on how to request a device.</li>
+        </ul>
+        <h3>Reporting bugs</h3>
+        <p>For a proper bug report, you'll need to grab logs immediately after the bug happens. Check our Capturing logs page for more information.</p>
+        <ul>
+          <li>Learn here how to setup your device and your computer to retrieve logs.</li>
+          <li>Learn here how to submit your bug report.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>For everyone</h2>
+        <hr />
+        <h3>Contribute to the Wiki</h3>
+        <p>LeafOS' wiki is powered by Symfony.</p>
+        <ul>
+          <li>The source is available on Gerrit.</li>
+          <li>And here is our guide on contributing.</li>
+        </ul>
+
+        <h3>Build for your device</h3>
+        <p>All of our officially-supported devices have their own set of build-instructions. Check the device page for more detailed information.</p>
+      </div>
+      <div>
+        <h2>For everyone</h2>
       </div>
     </div>
   </article>

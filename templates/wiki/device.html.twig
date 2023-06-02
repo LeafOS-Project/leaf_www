@@ -1,19 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% set currentDevice = app.request.attributes.get('_route_params').device %}
-
 {% block title %}
   LeafOS Wiki
 {% endblock %}
 
 {% block body %}
-  <aside class="navigation">
-    <h2>Devices</h2>
-
-    {% for device in availableDevices %}
-      <a href="{{ path('leaf_device', { device: device.codename }) }}" class="{{ currentDevice == device.codename ? 'active' : '' }}">{{ device.codename }}</a>
-    {% endfor %}
-  </aside>
+  {% include '@components/aside.html.twig' %}
   <article>
     <div class="banner">
       <div class="container">
@@ -26,6 +18,7 @@
         <div class="instructions">
           <h2>Downloads</h2>
           <h3>Latest builds</h3>
+          <hr />
           <div class="latest-builds">
             {% for build in downloads.latestBuilds %}
               <div class="build-card">
@@ -51,7 +44,7 @@
                       </tr>
                       <tr>
                         <td colspan="2" class="center">
-                          <a href="{{build.url}}" class="button">Download</a>
+                          <a href="{{ build.url }}" class="button">Download</a>
                         </td>
                       </tr>
                     </tbody>
@@ -71,36 +64,26 @@
           <table>
             <tbody>
               <tr>
-                <td>
-                  SoC
-                </td>
+                <td>SoC</td>
                 <td>{{ device.soc }} ({{ device.architecture }})</td>
               </tr>
               <tr>
-                <td>
-                  CPU
-                </td>
+                <td>CPU</td>
                 <td>
                   <p>{{ device.cpu_cores }} cores {{ device.cpu }}</p>
                   <p>{{ device.cpu_freq }}</p>
                 </td>
               </tr>
               <tr>
-                <td>
-                  GPU
-                </td>
+                <td>GPU</td>
                 <td>{{ device.gpu }}</td>
               </tr>
               <tr>
-                <td>
-                  RAM
-                </td>
+                <td>RAM</td>
                 <td>{{ device.ram }}</td>
               </tr>
               <tr>
-                <td>
-                  Storage
-                </td>
+                <td>Storage</td>
                 <td>
                   <p>{{ device.storage }}</p>
                   {% if device.sdcard is defined %}
@@ -109,9 +92,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Screen
-                </td>
+                <td>Screen</td>
                 <td>
                   <ul>
                     <li>{{ device.screen.size }}</li>
@@ -121,16 +102,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Battery
-                </td>
+                <td>Battery</td>
                 <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
                   {{ device.battery.tech }} {{ device.battery.capacity }} mAh</td>
               </tr>
               <tr>
-                <td>
-                  Cameras
-                </td>
+                <td>Cameras</td>
                 <td>
                   <ul>
                     {% for camera in device.cameras %}
@@ -140,9 +117,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  Network
-                </td>
+                <td>Network</td>
                 <td>
                   <ul>
                     {% for network in device.network %}
@@ -152,15 +127,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  WiFi
-                </td>
+                <td>WiFi</td>
                 <td>{{ device.wifi }}</td>
               </tr>
               <tr>
-                <td>
-                  Bluetooth
-                </td>
+                <td>Bluetooth</td>
                 <td>
                   {{ device.bluetooth.spec }}
                   {% if device.bluetooth.profiles is defined and device.bluetooth.profiles is not empty %}
@@ -175,5 +146,5 @@
         </div>
       </div>
     </div>
-  </artic>
+  </article>
 {% endblock %}
