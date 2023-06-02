@@ -10,10 +10,25 @@
   <aside class="navigation">
     <h2>Devices</h2>
 
-    {% for device in availableDevices %}
-      <a href="{{ path('leaf_device', { device: device.codename }) }}" class="{{ currentDevice == device.codename ? 'active' : '' }}">{{ device.codename }}</a>
-    {% endfor %}
+    <ul>
+      {% for vendor, devices in deviceVendors %}
+        <li>
+          <a href="#" class="vendor-dropdown" data-vendor="{{ vendor }}">
+            <img class="icon" src="{{ asset('assets/images/svg/mobile.svg') }}" alt="" />
+            {{ vendor }}
+          </a>
+          <ul class="dropdown-menu" style="display: none;">
+            {% for device in devices %}
+              <li>
+                <a href="{{ path('leaf_device', { device: device.codename }) }}">{{ device.codename }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
   </aside>
+
   <article>
     <div class="banner">
       <div class="container">

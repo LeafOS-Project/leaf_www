@@ -553,3 +553,18 @@ td {
     font-size: 12px;
   }
 }
+
+.vendor-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.dropdown-menu {
+  margin-left: 20px;
+}
