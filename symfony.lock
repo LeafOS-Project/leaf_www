@@ -26,6 +26,9 @@
             "./migrations/.gitignore"
         ]
     },
+    "stenope/stenope": {
+        "version": "v0.8.0"
+    },
     "symfony/console": {
         "version": "6.2",
         "recipe": {
