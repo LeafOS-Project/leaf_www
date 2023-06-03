@@ -11,9 +11,4 @@ class HomeController extends AbstractController {
     public function index(): Response {
         return $this->render('home/index.html.twig');
     }
-
-    #[Route('/stack', name: 'leaf_stack')]
-    public function stack(): Response {
-        return $this->render('stack/index.html.twig');
-    }
 }
