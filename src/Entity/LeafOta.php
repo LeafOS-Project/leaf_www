@@ -34,6 +34,9 @@ class LeafOta {
     private ?string $url = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $recovery = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $version = null;
 
     #[ORM\Column(length: 255)]
@@ -110,6 +113,16 @@ class LeafOta {
 
     public function setUrl(string $url): self {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getRecovery(): ?string {
+        return $this->recovery;
+    }
+
+    public function setRecoveryUrl(string $recovery): self {
+        $this->recovery = $recovery;
 
         return $this;
     }
