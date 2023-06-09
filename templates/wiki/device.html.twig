@@ -43,8 +43,11 @@
                         <td>{{ build.size|human_readable_format }}</td>
                       </tr>
                       <tr>
-                        <td colspan="2" class="center">
-                          <a href="{{ build.url }}" class="button">Download</a>
+                        <td>
+                          <a href="{{ build.url }}" class="button">Full build</a>
+                        </td>
+                        <td>
+                          <a href="{{ build.recoveryUrl }}" class="button">Recovery</a>
                         </td>
                       </tr>
                     </tbody>

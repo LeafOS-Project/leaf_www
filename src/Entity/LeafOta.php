@@ -163,4 +163,10 @@ class LeafOta {
 
         return $this;
     }
+
+    public function getRecoveryUrl(): ?string {
+        $url = $this->getUrl();
+
+        return str_replace('.zip', '-recovery.img', $url);
+    }
 }
