@@ -2,7 +2,7 @@
 
 <aside>
   <h2>Devices</h2>
-  <input type="text" id="device-search" placeholder="Search devices" onkeyup="searchDevices()">
+  <input type="text" id="device-search" placeholder="Search device" onkeyup="searchDevices()" />
   {% for vendor, devices in deviceVendors %}
     {% set hasSelectedDevice = false %}
     {% for device in devices %}
@@ -11,10 +11,10 @@
       {% endif %}
     {% endfor %}
     <div class="accordion-item">
-      <input type="checkbox" id="vendor-{{ loop.index }}" name="accordion" hidden {{ hasSelectedDevice ? 'checked' : '' }}/>
+      <input type="checkbox" id="vendor-{{ loop.index }}" name="accordion" hidden {{ hasSelectedDevice ? 'checked' : '' }} />
       <label class="accordion-label" for="vendor-{{ loop.index }}">
         <div class="label-content">
-          <img class="icon" src="{{ asset('assets/images/svg/mobile.svg') }}" alt=""/>
+          <img class="icon" src="{{ asset('assets/images/svg/mobile.svg') }}" alt="" />
           <span style="font-weight: bold">{{ vendor }}</span>
         </div>
       </label>

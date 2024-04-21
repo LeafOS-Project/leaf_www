@@ -9,7 +9,11 @@
   <article>
     <div class="banner">
       <div class="container">
-        <h1>LeafOS for {{ device.vendor }} {{ device.name }}</h1>
+        <h1>
+          LeafOS for
+          {{ device.vendor }}
+          {{ device.name }}
+        </h1>
       </div>
     </div>
 
@@ -56,24 +60,30 @@
               </div>
             {% endfor %}
           </div>
-          <h3>Archive</h3>
         </div>
         <div class="specs">
           <div class="heading">
-            <h2>{{ device.vendor }} {{ device.name }}</h2>
-            <p>Released {{ device.release|date('d/m/Y') }}</p>
+            <h2>
+              {{ device.vendor }}
+              {{ device.name }}
+            </h2>
+            <p>Released
+              {{ device.release|date('d/m/Y') }}</p>
           </div>
           <img src="{{ asset('assets/images/devices/' ~ device.image) }}" alt="{{ device.name }}" />
           <table>
             <tbody>
               <tr>
                 <td>SoC</td>
-                <td>{{ device.soc }} ({{ device.architecture }})</td>
+                <td>{{ device.soc }}
+                  ({{ device.architecture }})</td>
               </tr>
               <tr>
                 <td>CPU</td>
                 <td>
-                  <p>{{ device.cpu_cores }} cores {{ device.cpu }}</p>
+                  <p>{{ device.cpu_cores }}
+                    cores
+                    {{ device.cpu }}</p>
                   <p>{{ device.cpu_freq }}</p>
                 </td>
               </tr>
@@ -90,7 +100,8 @@
                 <td>
                   <p>{{ device.storage }}</p>
                   {% if device.sdcard is defined %}
-                    <p>SD card slot up to {{ device.sdcard.sizeMax }}</p>
+                    <p>SD card slot up to
+                      {{ device.sdcard.sizeMax }}</p>
                   {% endif %}
                 </td>
               </tr>
@@ -99,7 +110,9 @@
                 <td>
                   <ul>
                     <li>{{ device.screen.size }}</li>
-                    <li>{{ device.screen.resolution }} ({{ device.screen.density }} PPI)</li>
+                    <li>{{ device.screen.resolution }}
+                      ({{ device.screen.density }}
+                      PPI)</li>
                     <li>{{ device.screen.technology }}</li>
                   </ul>
                 </td>
@@ -107,14 +120,17 @@
               <tr>
                 <td>Battery</td>
                 <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
-                  {{ device.battery.tech }} {{ device.battery.capacity }} mAh</td>
+                  {{ device.battery.tech }}
+                  {{ device.battery.capacity }}
+                  mAh</td>
               </tr>
               <tr>
                 <td>Cameras</td>
                 <td>
                   <ul>
                     {% for camera in device.cameras %}
-                      <li>{{ camera.info }} {{ camera.flash != 'None' ? ', ' ~ camera.flash ~ ' flash' : '' }}</li>
+                      <li>{{ camera.info }}
+                        {{ camera.flash != 'None' ? ', ' ~ camera.flash ~ ' flash' : '' }}</li>
                     {% endfor %}
                   </ul>
                 </td>
