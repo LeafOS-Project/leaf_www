@@ -1,42 +1,76 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  LeafOS Community
+	LeafOS Community
 {% endblock %}
 
 {% block body %}
-  <article>
-    <div class="banner">
-      <div class="container">
-        <h1>Community</h1>
-        <p>Whether you're an experienced Android user or you're just getting started with open-source software, there are lots of ways to get involved with the LeafOS community.</p>
-      </div>
-    </div>
+	<article>
+		<div class="banner">
+			<div class="container">
+				<h1>Community</h1>
+				<p>Whether you're an experienced Android user or you're just getting started with open-source software, there are lots of ways to get involved with the LeafOS community.</p>
+			</div>
+		</div>
 
-    <div class="container">
-      <h2>Contribute</h2>
-      <div class="contribute">
-        <div>
-          <h3><a href="https://review.leafos.org" target="_blank" class="text-green shadow">Gerrit</a></h3>
-          <p>Gerrit is a web based code review system, facilitating online code reviews for projects using the Git version control system.</p>
-        </div>
-        <div>
-          <h3><a href="{{ path('leaf_wiki') }}" target="_blank" class="text-green shadow">Wiki</a></h3>
-          <p>Our wiki is always looking for editors. If you enjoy writing clear and concise guides, tutorials, or documentation we need you!</p>
-        </div>
-        <div>
-          <h3><a href="https://translate.leafos.org" target="_blank" class="text-green shadow">Translate</a></h3>
-          <p>Help people enjoy LeafOS in their native language by localizing it. Anyone can easily contribute thanks to Weblate.</p>
-        </div>
-      </div>
+		<div class="container community">
+			<h2>Contribute</h2>
+			<div class="contribute">
+				<div>
+					<h3>
+						<a href="https://review.leafos.org" target="_blank" class="text-green shadow">Gerrit</a>
+					</h3>
+					<p>Contribute directly to the development of LeafOS by reviewing and submitting code changes on Gerrit. Whether you're a seasoned developer or just getting started, your contributions help shape the future of LeafOS.</p>
+				</div>
+				<div>
+					<h3>
+						<a href="{{ path('leaf_wiki') }}" target="_blank" class="text-green shadow">Wiki</a>
+					</h3>
+					<p>Our wiki is always looking for editors. If you enjoy writing clear and concise guides, tutorials, or documentation we need you!</p>
+				</div>
+				<div>
+					<h3>
+						<a href="https://translate.leafos.org" target="_blank" class="text-green shadow">Translate</a>
+					</h3>
+					<p>Help people enjoy LeafOS in their native language by localizing it. Anyone can easily contribute thanks to Weblate.</p>
+				</div>
+			</div>
 
-      <h2>Support</h2>
-      <div class="contribute">
-        <div>
-          <h3><a href="https://t.me/leafos" target="_blank" class="text-green shadow">Telegram</a></h3>
-          <p>For discussions regarding devices, features, or just general Android talk.</p>
-        </div>
-      </div>
-    </div>
-  </article>
+			<h2>Discuss</h2>
+			<div class="contribute">
+				<div>
+					<h3>
+						<a href="https://t.me/leafos" target="_blank" class="text-green shadow">Telegram</a>
+					</h3>
+					<p>For discussions regarding devices, features, or just general Android talk.</p>
+				</div>
+				<div>
+					<h3>
+						<a href="https://forum.leafos.org" target="_blank" class="text-green shadow">LeafOS Forum</a>
+					</h3>
+					<p>Our very own forum! Join it for discussions, troubleshooting, and collaboration.</p>
+				</div>
+			</div>
+
+			<h2>Support</h2>
+			<div class="contribute">
+				<div>
+					<h3>
+						<a href="https://ko-fi.com/leafos" target="_blank" class="text-green shadow">Ko-fi</a>
+					</h3>
+					<p>Your support will keep our servers running and allow us to continue providing updates, please consider making a donation to cover our server expenses.</p>
+				</div>
+			</div>
+
+			<h2>Others</h2>
+			<div class="contribute">
+				<div>
+					<h3>
+						<a href="https://ci.leafos.org" target="_blank" class="text-green shadow">Jenkins</a>
+					</h3>
+					<p>You can visit our Jenkins in order to track progress on builds for your device.</p>
+				</div>
+			</div>
+		</div>
+	</article>
 {% endblock %}
