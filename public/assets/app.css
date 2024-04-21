@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url(./fonts/HarmonyOS_Sans_Regular.ttf) format("truetype");
+  src: url(./fonts/HarmonyOS_Sans_Regular.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url(./fonts/HarmonyOS_Sans_Bold.ttf) format("truetype");
+  src: url(./fonts/HarmonyOS_Sans_Bold.ttf) format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -212,15 +212,15 @@ aside h2 {
   color: var(--button-color) !important;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: none;
 }
 
-input[type="checkbox"]:checked+.accordion-label::after {
+input[type='checkbox']:checked + .accordion-label::after {
   transform: rotate(-180deg);
 }
 
-input[type="checkbox"]:checked~.accordion-content {
+input[type='checkbox']:checked ~ .accordion-content {
   max-height: 1000px;
 }
 
@@ -341,6 +341,11 @@ nav.navbar {
 
 .container h2 {
   margin-bottom: 15px;
+}
+
+.community h2 {
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 .button {
@@ -620,19 +625,19 @@ td {
     transform: translateY(-9px) rotate(-45deg);
   }
 
-  #toggle-aside:checked~.navbar .label-aside .top-bar {
+  #toggle-aside:checked ~ .navbar .label-aside .top-bar {
     transform: translateY(9px) rotate(-45deg);
   }
 
-  #toggle-aside:checked~.navbar .label-aside .middle-bar {
+  #toggle-aside:checked ~ .navbar .label-aside .middle-bar {
     opacity: 0;
   }
 
-  #toggle-aside:checked~.navbar .label-aside .bottom-bar {
+  #toggle-aside:checked ~ .navbar .label-aside .bottom-bar {
     transform: translateY(-9px) rotate(45deg);
   }
 
-  #toggle-aside:checked~main aside {
+  #toggle-aside:checked ~ main aside {
     display: block;
   }
 
@@ -662,19 +667,19 @@ td {
     opacity: 1;
   }
 
-  #toggle-navbar:checked~.label-navbar .top-bar {
+  #toggle-navbar:checked ~ .label-navbar .top-bar {
     transform: translateY(8px) rotate(45deg);
   }
 
-  #toggle-navbar:checked~.label-navbar .middle-bar {
+  #toggle-navbar:checked ~ .label-navbar .middle-bar {
     opacity: 0;
   }
 
-  #toggle-navbar:checked~.label-navbar .bottom-bar {
+  #toggle-navbar:checked ~ .label-navbar .bottom-bar {
     transform: translateY(-4px) rotate(-45deg);
   }
 
-  #toggle-navbar:checked~ul {
+  #toggle-navbar:checked ~ ul {
     display: flex;
   }
 
