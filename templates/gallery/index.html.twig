@@ -1,20 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  LeafOS Gallery
+	Screenshots
 {% endblock %}
 
 {% block body %}
-  <article class="gallery">
-    <div class="banner">
-      <div class="container">
-        <h1>ROM Gallery</h1>
-      </div>
-    </div>
-    <div class="screenshot-gallery">
-      {% for screenshot in screenshots %}
-        <img src="{{ asset('assets/images/screenshots/' ~ screenshot) }}" alt="Screenshot" />
-      {% endfor %}
-    </div>
-  </article>
+	<article class="gallery">
+		<div class="banner">
+			<div class="container">
+				<h1>Screenshots</h1>
+				<p>Here are some screenshots to give you a glimpse of LeafOS</p>
+			</div>
+		</div>
+		<div class="container">
+			<h2>Quick Settings</h2>
+			<div class="screenshot-gallery">
+				{% set subdirectory = 'qs' %}
+				{% for screenshot in screenshots[subdirectory] %}
+					<img src="{{ asset('assets/images/screenshots/' ~ subdirectory ~ '/' ~ screenshot) }}" alt="Screenshot"/>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="container">
+			<h2>Wallpaper and style</h2>
+			<div class="screenshot-gallery">
+				{% set subdirectory = 'styles' %}
+				{% for screenshot in screenshots[subdirectory] %}
+					<img src="{{ asset('assets/images/screenshots/' ~ subdirectory ~ '/' ~ screenshot) }}" alt="Screenshot"/>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="container">
+			<h2>Other features</h2>
+			<div class="screenshot-gallery">
+				{% set subdirectory = 'others' %}
+				{% for screenshot in screenshots[subdirectory] %}
+					<img src="{{ asset('assets/images/screenshots/' ~ subdirectory ~ '/' ~ screenshot) }}" alt="Screenshot"/>
+				{% endfor %}
+			</div>
+		</div>
+	</article>
 {% endblock %}

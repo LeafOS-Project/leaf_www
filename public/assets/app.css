@@ -393,10 +393,9 @@ nav.navbar {
 }
 
 .screenshot-gallery img {
-    border-radius: 8px;
-    flex-basis: 25%;
+    border-radius: 10px;
+    flex-basis: 20%;
     width: 200px;
-    box-shadow: 0 2px 8px black;
 }
 
 .wiki {
