@@ -38,15 +38,15 @@ class WikiController extends AbstractController {
     #[Route('/wiki/device/{device}', name: 'leaf_wiki_device')]
     public function device(DeviceService $deviceService, LeafOtaService $otaService, string $device): Response {
         $latestBuilds = [
-            'vanilla' => $otaService->getLatestBuildForDevice($device, OtaFlavor::Vanilla->value),
-            'gms'     => $otaService->getLatestBuildForDevice($device, OtaFlavor::Gms->value),
-            'microg'  => $otaService->getLatestBuildForDevice($device, OtaFlavor::microG->value)
+            'VANILLA' => $otaService->getLatestBuildForDevice($device, OtaFlavor::VANILLA->value),
+            'GMS'     => $otaService->getLatestBuildForDevice($device, OtaFlavor::GMS->value),
+            'microG'  => $otaService->getLatestBuildForDevice($device, OtaFlavor::microG->value)
         ];
 
         $latestOTAs = [
-            'vanilla' => $otaService->getLatestOTAForDevice($device, OtaFlavor::Vanilla->value),
-            'gms'     => $otaService->getLatestOTAForDevice($device, OtaFlavor::Gms->value),
-            'microg'  => $otaService->getLatestOTAForDevice($device, OtaFlavor::microG->value)
+            'VANILLA' => $otaService->getLatestOTAForDevice($device, OtaFlavor::VANILLA->value),
+            'GMS'     => $otaService->getLatestOTAForDevice($device, OtaFlavor::GMS->value),
+            'microG'  => $otaService->getLatestOTAForDevice($device, OtaFlavor::microG->value)
         ];
 
         $allBuilds = $otaService->getAllBuildsForDevice($device);
