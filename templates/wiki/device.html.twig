@@ -80,6 +80,7 @@
                 <td>{{ device.soc }}
                   ({{ device.architecture }})</td>
               </tr>
+              {% if device.cpu is defined %}
               <tr>
                 <td>CPU</td>
                 <td>
@@ -89,14 +90,20 @@
                   <p>{{ device.cpu_freq }}</p>
                 </td>
               </tr>
+              {% endif %}
+              {% if device.gpu is defined %}
               <tr>
                 <td>GPU</td>
                 <td>{{ device.gpu }}</td>
               </tr>
+              {% endif %}
+              {% if device.ram is defined %}
               <tr>
                 <td>RAM</td>
                 <td>{{ device.ram }}</td>
               </tr>
+              {% endif %}
+              {% if device.storage is defined %}
               <tr>
                 <td>Storage</td>
                 <td>
@@ -107,6 +114,8 @@
                   {% endif %}
                 </td>
               </tr>
+              {% endif %}
+              {% if device.screen is defined %}
               <tr>
                 <td>Screen</td>
                 <td>
@@ -119,6 +128,8 @@
                   </ul>
                 </td>
               </tr>
+              {% endif %}
+              {% if device.battery is defined %}
               <tr>
                 <td>Battery</td>
                 <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
@@ -126,6 +137,8 @@
                   {{ device.battery.capacity }}
                   mAh</td>
               </tr>
+              {% endif %}
+              {% if device.cameras is defined %}
               <tr>
                 <td>Cameras</td>
                 <td>
@@ -137,6 +150,8 @@
                   </ul>
                 </td>
               </tr>
+              {% endif %}
+              {% if device.network is defined %}
               <tr>
                 <td>Network</td>
                 <td>
@@ -147,10 +162,14 @@
                   </ul>
                 </td>
               </tr>
+              {% endif %}
+              {% if device.wifi is defined %}
               <tr>
                 <td>WiFi</td>
                 <td>{{ device.wifi }}</td>
               </tr>
+              {% endif %}
+              {% if device.bluetooth is defined %}
               <tr>
                 <td>Bluetooth</td>
                 <td>
@@ -162,6 +181,7 @@
                   {% endif %}
                 </td>
               </tr>
+              {% endif %}
             </tbody>
           </table>
         </div>
