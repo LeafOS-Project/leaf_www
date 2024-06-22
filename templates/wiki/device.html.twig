@@ -51,9 +51,11 @@
                         <td>
                           <a href="{{ build.url }}" class="button">Full build</a>
                         </td>
+                        {% if not '_gsi_' in device.codename %}
                         <td>
                           <a href="{{ build.recoveryUrl }}" class="button">Recovery</a>
                         </td>
+                        {% endif %}
                       </tr>
                     </tbody>
                   </table>
