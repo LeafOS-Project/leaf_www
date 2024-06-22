@@ -84,7 +84,9 @@
                 <td>CPU</td>
                 <td>
                   <p>{{ device.cpu_cores }}
+                  {% if device.cpu_cores is defined %}
                     cores
+                  {% endif %}
                     {{ device.cpu }}</p>
                   <p>{{ device.cpu_freq }}</p>
                 </td>
@@ -113,18 +115,25 @@
                   <ul>
                     <li>{{ device.screen.size }}</li>
                     <li>{{ device.screen.resolution }}
+                      {% if device.screen_density is defined %}
                       ({{ device.screen.density }}
-                      PPI)</li>
+                      PPI)
+                      {% endif %}
+                    </li>
                     <li>{{ device.screen.technology }}</li>
                   </ul>
                 </td>
               </tr>
               <tr>
                 <td>Battery</td>
-                <td colspan="2">{{ device.battery.removable ? 'Removable' : 'Non-removable' }}
+                <td colspan="2">
+                  {% if device.battery is defined %}
+                  {{ device.battery.removable ? 'Removable' : 'Non-removable' }}
                   {{ device.battery.tech }}
                   {{ device.battery.capacity }}
-                  mAh</td>
+                  mAh
+                  {% endif %}
+                </td>
               </tr>
               <tr>
                 <td>Cameras</td>
