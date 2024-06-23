@@ -28,17 +28,24 @@ class DeviceService {
 
     public function getDeviceVendors(): array {
         $availableDevices = $this->getAvailableDevices();
+        $gsiVendor = [];
         $vendors = [];
 
         foreach ($availableDevices as $device) {
             $vendor = $device['vendor'];
+
+            if ($vendor === "LeafOS GSI") {
+                $gsiVendor[] = $device;
+                continue;
+            }
             if (!array_key_exists($vendor, $vendors)) {
                 $vendors[$vendor] = [];
             }
             $vendors[$vendor][] = $device;
         }
 
-        return $vendors;
+        ksort($vendors);
+        return ['LeafOS GSI' => $gsiVendor] + $vendors;
     }
 
     public function getDeviceInfo(string $device) {
