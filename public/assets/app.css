@@ -575,6 +575,8 @@ td {
   main aside {
     display: none;
     position: fixed;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   .navbar {
