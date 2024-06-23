@@ -575,6 +575,9 @@ td {
   main aside {
     display: none;
     position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   .navbar {
@@ -639,6 +642,14 @@ td {
 
   #toggle-aside:checked ~ main aside {
     display: block;
+  }
+
+  #toggle-aside:checked ~ main {
+    overflow: hidden;
+  }
+
+  #toggle-aside:checked ~ footer {
+    display: none;
   }
 
   .navbar .label-navbar {
