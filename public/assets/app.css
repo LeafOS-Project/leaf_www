@@ -207,6 +207,16 @@ aside h2 {
   transition: background-color 200ms ease-in-out;
 }
 
+.device-search {
+  border-radius: 20px;
+  padding: 10px;
+  margin: 0 15px 15px 15px;
+  border: none;
+  outline: none;
+  width: calc(100% - 30px);
+  box-sizing: border-box;
+}
+
 .selected-device,
 .selected-device:hover {
   background-color: var(--button-bg-active) !important;
@@ -705,16 +715,4 @@ td {
   .device-info {
     flex-direction: column-reverse;
   }
-}
-
-#device-search {
-  border-radius: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  margin-left: 15px;
-  margin-right: 10px;
-  margin-bottom: 15px;
-  border: none;
-  outline: none;
 }
