@@ -692,6 +692,10 @@ td {
   .features {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+
+  .device-info {
+    flex-direction: column-reverse;
+  }
 }
 
 #device-search {
