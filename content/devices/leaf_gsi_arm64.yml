@@ -6,5 +6,5 @@ models: [LeafOS on ARM64]
 name: Generic ARM64
 release: 2022-05-23
 soc: Generic
-vendor: LeafOS
+vendor: LeafOS GSI
 versions: [3.2]
