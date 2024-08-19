@@ -2,6 +2,7 @@ FROM debian:testing
 
 ARG baseurl
 ENV full_baseurl=/$baseurl
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 WORKDIR /src
 ADD . /src
