@@ -45,12 +45,14 @@ final class ExceptionListener {
             default:
                 $html = $this->twig->render('errors/500.html.twig', [
                     'subject' => 'page',
-                    'message' => "Our server misbehaved. Bad Server, boo."
+                    'message' => $throwable->getMessage(),
+                    'trace' => $throwable->getTraceAsString()
                 ]);
                 $response = new Response();
                 $response->setContent($html);
 
                 $event->setResponse($response);
+                break;
         }
     }
 }
